@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-bool gameShouldRun = true;
+﻿bool gameShouldRun = true;
 List<string> gameHistory = new List<string>();
 
 do
