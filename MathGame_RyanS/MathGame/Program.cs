@@ -14,22 +14,22 @@ void MathGameFunction()
 
     switch (operationChoice)
     {
-        case "addition":
+        case ":Addition:":
         AdditionFunction();
         break;
-        case "subtraction":
+        case ":Subtraction:":
         SubtractionFunction();
         break;
-        case "multiplication":
+        case ":Multiplication:":
         MultiplicationFunction();
         break;
-        case "division":
+        case ":Division:":
         DivisionFunction();
         break;
-        case "past games":
+        case ":Past Games:":
         PastGamesFunction();
         break;
-        case "quit game":
+        case ":Quit Game:":
         QuitGame();
         break;
     }
