@@ -9,8 +9,8 @@ do
 
 void MathGameFunction()
 {
-    Console.WriteLine("Hello! Welcome to Ryan's Miraculous Math Game!!\nPlease choose an operation to perform:\n\n:Addition:\n:Subtraction:\n:Multiplication:\n:Division:\n:Past Games:\n:Quit Game:\n");
-    string operationChoice = Console.ReadLine();
+    Console.WriteLine("Hello! Welcome to Ryan's Miraculous Math Game!!\nPlease choose an operation to perform:\n\n:Addition:\n:Subtraction:\n:Multiplication:\n:Division:\n:Random Game:\n:Past Games:\n:Quit Game:\n");
+    var operationChoice = Console.ReadLine();
 
     switch (operationChoice)
     {
@@ -26,6 +26,9 @@ void MathGameFunction()
         case ":Division:":
         DivisionFunction();
         break;
+        case ":Random Game:":
+        RandomGameFunction();
+        break;
         case ":Past Games:":
         PastGamesFunction();
         break;
@@ -37,96 +40,182 @@ void MathGameFunction()
 
 void AdditionFunction()
 {
-    Console.WriteLine("Please input any number.\n");
-    int num1 = 0;
-    Int32.TryParse(Console.ReadLine(), out num1);
-    Console.WriteLine("Please input the number to add to " + num1);
-    int num2 = 0;
-    Int32.TryParse(Console.ReadLine(), out num2);
+    Console.WriteLine("Solve the following problem: \n");
+
+    Random rnd = new Random();
+    int num1 = rnd.Next(1, 100);
+    int num2 = rnd.Next(1, 100);
     int sum = num1 + num2;
-    string answer = "The sum of " + num1 + " and " + num2 + " is " + sum + ".";
-    Console.WriteLine(answer);
-    gameHistory.Add(answer);
-    Console.WriteLine("Press enter to continue...");
+
+    string question = num1 + " + " + num2 + " = ?";
+    Console.WriteLine(question + "\n");
+
+    var guessString = Console.ReadLine();
+    int guess = Convert.ToInt32(guessString);
+    Console.WriteLine();
+    string rightOrWrong = "";
+
+    if(guess == sum)
+    {
+        Console.WriteLine("That is correct!\n");
+        rightOrWrong = "CORRECT";
+    }
+    else if(guess != sum)
+    {
+        Console.WriteLine("That is incorrect.\n");
+        rightOrWrong = "INCORRECT";
+    }
+
+    Console.WriteLine("Press Enter to continue...");
     Console.ReadLine();
+    Console.Clear();
+
+    string addToHistory = question + " --- Answer: " + guess + " - " + rightOrWrong;
+    gameHistory.Add(addToHistory);
 }
 
 void SubtractionFunction()
 {
-    Console.WriteLine("Please input any number.\n");
-    int num1 = 0;
-    Int32.TryParse(Console.ReadLine(), out num1);
-    Console.WriteLine("Please input the number to subtract from " + num1);
-    int num2 = 0;
-    Int32.TryParse(Console.ReadLine(), out num2);
+    Console.WriteLine("Solve the following problem: \n");
+
+    Random rnd = new Random();
+    int num1 = rnd.Next(1, 100);
+    int num2 = rnd.Next(1, 100);
     int difference = num1 - num2;
-    string answer = "The difference of " + num1 + " and " + num2 + " is " + difference + ".";
-    Console.WriteLine(answer);
-    gameHistory.Add(answer);
-    Console.WriteLine("Press enter to continue...");
+
+    string question = num1 + " - " + num2 + " = ?";
+    Console.WriteLine(question + "\n");
+
+    var guessString = Console.ReadLine();
+    int guess = Convert.ToInt32(guessString);
+    Console.WriteLine();
+    string rightOrWrong = "";
+
+    if (guess == difference)
+    {
+        Console.WriteLine("That is correct!\n");
+        rightOrWrong = "CORRECT";
+    }
+    else if (guess != difference)
+    {
+        Console.WriteLine("That is incorrect.\n");
+        rightOrWrong = "INCORRECT";
+    }
+
+    Console.WriteLine("Press Enter to continue...");
     Console.ReadLine();
+    Console.Clear();
+
+    string addToHistory = question + " --- Answer: " + guess + " - " + rightOrWrong;
+    gameHistory.Add(addToHistory);
 }
 
 void MultiplicationFunction()
 {
-    Console.WriteLine("Please input any number.\n");
-    int num1 = 0;
-    Int32.TryParse(Console.ReadLine(), out num1);
-    Console.WriteLine("Please input the number to multiply with " + num1);
-    int num2 = 0;
-    Int32.TryParse(Console.ReadLine(), out num2);
+    Console.WriteLine("Solve the following problem: \n");
+
+    Random rnd = new Random();
+    int num1 = rnd.Next(1, 100);
+    int num2 = rnd.Next(1, 100);
     int product = num1 * num2;
-    string answer = "The product of " + num1 + " and " + num2 + " is " + product + ".";
-    Console.WriteLine(answer);
-    gameHistory.Add(answer);
-    Console.WriteLine("Press enter to continue...");
+
+    string question = num1 + " * " + num2 + " = ?";
+    Console.WriteLine(question + "\n");
+
+    var guessString = Console.ReadLine();
+    int guess = Convert.ToInt32(guessString);
+    Console.WriteLine();
+    string rightOrWrong = "";
+
+    if (guess == product)
+    {
+        Console.WriteLine("That is correct!\n");
+        rightOrWrong = "CORRECT";
+    }
+    else if (guess != product)
+    {
+        Console.WriteLine("That is incorrect.\n");
+        rightOrWrong = "INCORRECT";
+    }
+
+    Console.WriteLine("Press Enter to continue...");
     Console.ReadLine();
+    Console.Clear();
+
+    string addToHistory = question + " --- Answer: " + guess + " - " + rightOrWrong;
+    gameHistory.Add(addToHistory);
 }
 
 void DivisionFunction()
 {
     int num1 = 0;
     int num2 = 0;
-    int moduloResult = 0;
+    int moduloResult = 1;
+    int quotient = 0;
 
     do
     {
-        do
-        {
-            Console.WriteLine("Please input any number.\n");
-            Int32.TryParse(Console.ReadLine(), out num1);
-            if(num1 > 100)
-            {
-                Console.WriteLine("The number cannot be greater than 100.");
-            }
-        }while(num1 > 100);
+        Random rnd = new Random();
+        num1 = rnd.Next(1, 100);
+        num2 = rnd.Next(1, 100);
+        moduloResult = num1 % num2;
+    } while(moduloResult != 0);
 
-        do
-        {
-            Console.WriteLine("Please input a number to divide " + num1 + " by.");
-            Int32.TryParse(Console.ReadLine(), out num2);
-            if(num2 > 100)
-            {
-                Console.WriteLine("The number cannot be greater than 100.");
-            }
-        }while(num2 > 100);
+    quotient = num1 / num2;
 
-        moduloResult = num1%num2;
+    string question = num1 + " / " + num2 + " = ?";
+    Console.WriteLine(question + "\n");
 
-        if(moduloResult != 0)
-        {
-            Console.WriteLine("The quotient of the two numbers must result in an integer.");
-        }
-        else if(moduloResult == 0)
-        {
-            int quotient = num1 / num2;
-            string answer = "The quotient of " + num1 + " and " + num2 + " is " + quotient;
-            Console.WriteLine(answer);
-            gameHistory.Add(answer);
-            Console.WriteLine("Press enter to continue...");
-            Console.ReadLine();
-        }
-    }while(moduloResult != 0);
+    var guessString = Console.ReadLine();
+    int guess = Convert.ToInt32(guessString);
+    Console.WriteLine();
+    string rightOrWrong = "";
+
+    if (guess == quotient)
+    {
+        Console.WriteLine("That is correct!\n");
+        rightOrWrong = "CORRECT";
+    }
+    else if (guess != quotient)
+    {
+        Console.WriteLine("That is incorrect.\n");
+        rightOrWrong = "INCORRECT";
+    }
+
+    Console.WriteLine("Press enter to continue...");
+    Console.ReadLine();
+    Console.Clear();
+
+    string addToHistory = question + " --- Answer: " + guess + " - " + rightOrWrong;
+    gameHistory.Add(addToHistory);
+}
+
+void RandomGameFunction()
+{
+    Random rnd = new Random();
+    int choice = rnd.Next(1, 4);
+
+    switch(choice)
+    {
+        case 1:
+            AdditionFunction();
+            break;
+        case 2:
+            SubtractionFunction();
+            break;
+        case 3:
+            MultiplicationFunction();
+            break;
+        case 4:
+            DivisionFunction();
+            break;
+        case 0:
+            Console.WriteLine(choice);
+            break;
+        case 5:
+            Console.WriteLine(choice);
+            break;
+    }
 }
 
 void PastGamesFunction()
@@ -137,6 +226,7 @@ void PastGamesFunction()
     }
     Console.WriteLine("Press enter to continue...");
     Console.ReadLine();
+    Console.Clear();
 }
 
 void QuitGame()
